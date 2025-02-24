@@ -36,14 +36,14 @@ async function getExerciseDetails(exerciseId) {
             page_id: exerciseId
         });
         return {
-            sets: exercise.properties['max #sets']?.formula?.number || 12,
-            reps: exercise.properties['max #reps']?.formula?.number || 99,
-            weight: exercise.properties['Best Weight']?.formula?.number || 99
+            sets: exercise.properties['max #sets']?.formula?.number || 0,
+            reps: exercise.properties['max #reps']?.formula?.number || 0,
+            weight: exercise.properties['Best Weight']?.formula?.number || 0
         };
     } catch (error) {
         console.error('Error getting exercise details:', error);
 	console.error('Exercise data:', exercise?.properties);  // Added for debugging
-        return { sets: 12, reps: 99, weight: 99 };
+        return { sets: 0, reps: 0, weight: 0 };
     }
 }
 
