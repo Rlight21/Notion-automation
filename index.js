@@ -152,5 +152,16 @@ async function checkNewSessions() {
 }
 
 console.log('Watching for new workout sessions...');
-setInterval(checkNewSessions, 10000); // Check every 30 seconds
+let countdown = 10; // Countdown in seconds
+
+setInterval(() => {
+    if (countdown === 0) {
+        checkNewSessions();
+        countdown = 10; // Reset countdown
+    } else {
+        console.log(`Checking for new sessions in ${countdown} seconds...`);
+        countdown--;
+    }
+}, 1000); // Update every second
+
 checkNewSessions(); // Check immediately on startup
